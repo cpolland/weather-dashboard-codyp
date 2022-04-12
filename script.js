@@ -1,6 +1,8 @@
 //search box variables
-var searchInput = document.getElementById('text');
-var searchBtn = document.getElementById('search-btn');
+var searchInput = document.getElementById('#city-form');
+var cityInputEl = document.getElementById('#city')
+var testCity = "Denver"
+
 
 //current city variables
 var currentCity = document.getElementById('current-city');
@@ -11,23 +13,29 @@ var currentUv = document.getElementById('current-uv')
 
 var city;
 var APIKey = "210b8c93ced365f2d43815addf6bdaba";
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&appid=" + APIKey;
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + testCity + "&appid=" + APIKey;
 
-//search bar input
+var getWeather = () =>{
+return fetch(queryURL)
+    .then(res => res.json())
+    .then(posts => console.log(posts))
+}
+
+//add event listners to log the inputs
 searchInput.addEventListener('input', event => {
+    event.preventDefault
     var cityTerm = event.target.value;
-    
-    
-    
-    
+
+    if (cityTerm === '') {
+        alert("Please type a city")
+    } else {
+        console.log(cityTerm);
+    }
 })
 
 
-searchBtn.addEventListener("click",function(){
-    
-})
 
-
-//fetch(queryURL)
-   // .then(respone => respone.json())
-  //  .then(data => console.log(data))
+//I need to log local city input and display it to the current city section
+//Asign the local city conditions to elements 
+//I need to aquire 5 day forcast and it conditions 
+//I need to log all previous searched cities
