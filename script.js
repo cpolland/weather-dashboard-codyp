@@ -15,11 +15,23 @@ var city;
 var APIKey = "210b8c93ced365f2d43815addf6bdaba";
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + testCity + "&appid=" + APIKey;
 
+//Weather fetch variable 
 var getWeather = () =>{
 return fetch(queryURL)
     .then(res => res.json())
     .then(posts => console.log(posts))
 }
+
+var today = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0');
+let yyyy = today.getFullYear();
+var today = mm + '/' + dd + '/' + yyyy;
+
+
+
+
+
 
 //add event listners to log the inputs
 searchInput.addEventListener('input', event => {
