@@ -41,10 +41,6 @@ var getWeather = (city) => {
       currentUv.textContent = getForcast(posts.coord.lat, posts.coord.lon);
     });
 };
-//I need to log local city input and display it to the current city section
-//Asign the local city conditions to elements
-//I need to aquire 5 day forcast and it conditions
-//I need to log all previous searched cities
 
 function getForcast(lat, lon) {
   var queryURL =
@@ -60,5 +56,15 @@ function getForcast(lat, lon) {
       console.log(posts);
       var currentUv = document.getElementById("current-uv");
       currentUv.textContent = "UV: " + posts.current.uvi;
+    });
+  // Get Weather Icon
+  fetch(queryURL)
+    .then((res) => res.json())
+    .then((posts) => {
+      console.log(posts.current.weather[0].main);
+      var weatherIcon = document.getElementById("weather-icon");
+      if (posts.current.weather[0].main === "Clouds") {
+        weatherIcon.textContent = "⛅️";
+      }
     });
 }
