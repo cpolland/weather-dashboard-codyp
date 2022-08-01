@@ -1,6 +1,6 @@
 var searchInput = document.getElementById("city-form");
 var searchBtn = document.getElementById("searchbtn");
-
+var recentSearchedCities = document.getElementById("search-history");
 //current city variables
 var currentCity = document.getElementById("current-city");
 var currentTemp = document.getElementById("current-temp");
@@ -10,6 +10,7 @@ var currentUv = document.getElementById("current-uv");
 
 var APIKey = "210b8c93ced365f2d43815addf6bdaba";
 var searchHistory = [];
+
 //event listener tfor searched city and saves it to local storage
 searchBtn.addEventListener("click", function () {
   var cityInputEl = document.getElementById("city-current").value;
@@ -21,6 +22,22 @@ searchBtn.addEventListener("click", function () {
 function storeCity() {
   localStorage.setItem("cities", JSON.stringify(searchHistory));
 }
+
+function renderSearchHistoy() {
+  recentSearchedCities.innerHTML = "";
+  for (let i = 0; i < searchHistory.length; i++) {
+    var history = searchHistory[i];
+
+    var li = document.createElement("li");
+    li.textContent = history;
+    li.setAttribute("data-index", i);
+
+    var button = document.createElement("button");
+    li.appendChild(button);
+    recentSearchedCities.appendChild(li);
+  }
+}
+
 //Weather fetch variable
 var getWeather = (city) => {
   var queryURL =
@@ -117,7 +134,6 @@ function getForcast(lat, lon) {
       dayFiveHumd.textContent = "Humidity: " + posts.daily[5].humidity + " %";
     });
 }
-
 // Get the current date
 
 var today = new Date();
