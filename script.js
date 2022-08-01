@@ -1,5 +1,4 @@
 var searchInput = document.getElementById("city-form");
-
 var searchBtn = document.getElementById("searchbtn");
 
 //current city variables
@@ -10,13 +9,18 @@ var currentHumd = document.getElementById("current-humd");
 var currentUv = document.getElementById("current-uv");
 
 var APIKey = "210b8c93ced365f2d43815addf6bdaba";
-
+var searchHistory = [];
+//event listener tfor searched city and saves it to local storage
 searchBtn.addEventListener("click", function () {
   var cityInputEl = document.getElementById("city-current").value;
   getWeather(cityInputEl);
-  console.log(cityInputEl);
+  searchHistory.push(cityInputEl);
+  storeCity();
 });
 
+function storeCity() {
+  localStorage.setItem("cities", JSON.stringify(searchHistory));
+}
 //Weather fetch variable
 var getWeather = (city) => {
   var queryURL =
@@ -103,7 +107,7 @@ function getForcast(lat, lon) {
       //Humidity
       var dayOneHumd = document.getElementById("day-one-humidity");
       dayOneHumd.textContent = "Humidity: " + posts.daily[1].humidity + " %";
-      var dayTwoHumd = document.getElementById("day-two-humdity");
+      var dayTwoHumd = document.getElementById("day-two-humidity");
       dayTwoHumd.textContent = "Humidity: " + posts.daily[2].humidity + " %";
       var dayThreeHumd = document.getElementById("day-three-humidity");
       dayThreeHumd.textContent = "Humidity: " + posts.daily[3].humidity + " %";
