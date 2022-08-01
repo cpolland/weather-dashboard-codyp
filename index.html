@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Weather Dashboard</title>
 </head>
 <body>
     <!--Jumbotron header-->
@@ -15,7 +18,7 @@
         <div class="card col-lg-3">
           <div class="card-body">
             <h1 class="card-title">Weather Search</h1>
-            <p class="card-text">Type in a city bolow and hit search to see the local weather</p>
+            <p class="card-text">Type in a city below and hit search to see the local weather</p>
             <input id="city-current"/>
             <button id="searchbtn">search</button>
           
@@ -26,8 +29,9 @@
         <div class="card col-lg-9">
             
             <div class="card-body">
+              <h2 id="current-city-date">Date:</h2>
               <h2 id="current-city">City:</h2>
-              <p id="weather-icon"></p>
+              <h2 id="weather-icon"></h2>
               <p id="current-temp">Temp:</p>
               <p id="current-wind">Wind:</p>
               <p id="current-humd">Humidity:</p>             
@@ -37,7 +41,7 @@
           </div>
         
       </div>
-<!--second row of info-->
+<!--Previous Searched city from Local Storage-->
       <div class="card-group">
         <div class="card col-lg-3">
           <div class="card-body">
@@ -51,58 +55,48 @@
         <div class="card col-lg-1.8">
  <!--five day forcast-->           
             <div class="card-body">
-              <h2 class="card-title">Date</h2>
-              <p class="card-text">Temp</p>
-              <p class="card-text">wind</p>
-              <p class="card-text">Humidity</p>
-              <p class="card-text">UV index</p>
-              
+              <h2 id="date-one">Date</h2>
+              <p id="day-one-temp">Temp</p>
+              <p id="day-one-wind">wind</p>
+              <p id="day-one-humidity">Humidity</p>
             </div>
           </div>
 
           <div class="card col-lg-1.8">
             
             <div class="card-body">
-              <h2 class="card-title">date</h2>
-              <p class="card-text">Temp</p>
-              <p class="card-text">wind</p>
-              <p class="card-text">Humidity</p>
-              <p class="card-text">UV index</p>
-              
+              <h2 id="date-two">Date</h2>
+              <p id="day-two-temp">Temp</p>
+              <p id="day-two-wind">wind</p>
+              <p id="day-two-humdity">Humidity</p>
             </div>
           </div>
           <div class="card col-lg-1.8">
             
             <div class="card-body">
-              <h2 class="card-title">Date</h2>
-              <p class="card-text">Temp</p>
-              <p class="card-text">wind</p>
-              <p class="card-text">Humidity</p>
-              <p class="card-text">UV index</p>
-              
+              <h2 id="date-three">Date</h2>
+              <p id="day-three-temp">Temp</p>
+              <p id="day-three-wind">wind</p>
+              <p id="day-three-humidity">Humidity</p>
             </div>
           </div>
           <div class="card col-lg-1.8">
             
             <div class="card-body">
-              <h2 class="card-title">Date</h2>
-              <p class="card-text">Temp</p>
-              <p class="card-text">wind</p>
-              <p class="card-text">Humidity</p>
-              <p class="card-text">UV index</p>
-              
+              <h2 id="date-four">Date</h2>
+              <p id="day-four-temp">Temp</p>
+              <p id="day-four-wind">wind</p>
+              <p id="day-four-humidity">Humidity</p>
             </div>
           </div>
           <div class="card col-lg-1.8">
             
             <div class="card-body">
-              <h2 class="card-title">Date</h2>
-              <p class="card-text">Temp</p>
-              <p class="card-text">wind</p>
-              <p class="card-text">Humidity</p>
-              <p class="card-text">UV index</p>
-              
-            </div>
+              <h2 id="date-five">Date</h2>
+              <p id="day-five-temp">Temp</p>
+              <p id="day-five-wind">wind</p>
+              <p id="day-five-humidity">Humidity</p> 
+           </div>
           </div> 
         
       </div>

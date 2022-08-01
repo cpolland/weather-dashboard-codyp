@@ -49,7 +49,8 @@ function getForcast(lat, lon) {
     "&lon=" +
     lon +
     "&appid=" +
-    APIKey;
+    APIKey +
+    "&units=imperial";
   fetch(queryURL)
     .then((res) => res.json())
     .then((posts) => {
@@ -57,14 +58,89 @@ function getForcast(lat, lon) {
       var currentUv = document.getElementById("current-uv");
       currentUv.textContent = "UV: " + posts.current.uvi;
     });
-  // Get Weather Icon
+  // Get Weather Icon for current City
   fetch(queryURL)
     .then((res) => res.json())
     .then((posts) => {
-      console.log(posts.current.weather[0].main);
       var weatherIcon = document.getElementById("weather-icon");
       if (posts.current.weather[0].main === "Clouds") {
         weatherIcon.textContent = "⛅️";
+      } else if (posts.current.weather[0].main === "Clear") {
+        weatherIcon.textContent = "☀️";
+      } else if (posts.current.weather[0].main === "Rain") {
+        weatherIcon.textContent = "🌧";
+      } else if (posts.current.weather[0].main === "Thunderstorm") {
+        weatherIcon.textContent = "🌩";
       }
     });
+
+  //Get 5 day Forcast
+  fetch(queryURL)
+    .then((res) => res.json())
+    .then((posts) => {
+      //Temp
+      var dayOneTemp = document.getElementById("day-one-temp");
+      dayOneTemp.textContent = "Temp: " + posts.daily[1].temp.day + " ℉";
+      var dayTwoTemp = document.getElementById("day-two-temp");
+      dayTwoTemp.textContent = "Temp: " + posts.daily[2].temp.day + " ℉";
+      var dayThreeTemp = document.getElementById("day-three-temp");
+      dayThreeTemp.textContent = "Temp: " + posts.daily[3].temp.day + " ℉";
+      var dayFourTemp = document.getElementById("day-four-temp");
+      dayFourTemp.textContent = "Temp: " + posts.daily[4].temp.day + " ℉";
+      var dayFiveTemp = document.getElementById("day-five-temp");
+      dayFiveTemp.textContent = "Temp: " + posts.daily[5].temp.day + " ℉";
+      //wind
+      var dayOneWind = document.getElementById("day-one-wind");
+      dayOneWind.textContent = "Wind: " + posts.daily[1].wind_speed + " mph";
+      var dayTwoWind = document.getElementById("day-two-wind");
+      dayTwoWind.textContent = "Wind: " + posts.daily[2].wind_speed + " mph";
+      var dayThreeWind = document.getElementById("day-three-wind");
+      dayThreeWind.textContent = "Wind: " + posts.daily[3].wind_speed + " mph";
+      var dayTwoWind = document.getElementById("day-four-wind");
+      dayTwoWind.textContent = "Wind: " + posts.daily[4].wind_speed + " mph";
+      var dayFiveWind = document.getElementById("day-five-wind");
+      dayFiveWind.textContent = "Wind: " + posts.daily[5].wind_speed + " mph";
+      //Humidity
+      var dayOneHumd = document.getElementById("day-one-humidity");
+      dayOneHumd.textContent = "Humidity: " + posts.daily[1].humidity + " %";
+      var dayTwoHumd = document.getElementById("day-two-humdity");
+      dayTwoHumd.textContent = "Humidity: " + posts.daily[2].humidity + " %";
+      var dayThreeHumd = document.getElementById("day-three-humidity");
+      dayThreeHumd.textContent = "Humidity: " + posts.daily[3].humidity + " %";
+      var dayFourHumd = document.getElementById("day-four-humidity");
+      dayFourHumd.textContent = "Humidity: " + posts.daily[4].humidity + " %";
+      var dayFiveHumd = document.getElementById("day-five-humidity");
+      dayFiveHumd.textContent = "Humidity: " + posts.daily[5].humidity + " %";
+    });
 }
+
+// Get the current date
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, "0");
+var mm = String(today.getMonth() + 1).padStart(2, "0");
+var yyyy = today.getFullYear();
+today = mm + "/" + dd + "/" + yyyy;
+
+//Current Date
+var currentDate = document.getElementById("current-city-date");
+currentDate.textContent = today;
+//Next 5 Days date
+var dayOne = function () {
+  dd = dd++;
+  if ((mm === 01, 03, 05, 07, 08, 10, 12)) {
+    !dd < 31;
+  }
+  return dd;
+};
+// Renders consecutive dates in the 5 day forcasts
+var tomorrow = document.getElementById("date-one");
+tomorrow.textContent = mm + "/" + dayOne(dd++) + "/" + yyyy;
+var secondDay = document.getElementById("date-two");
+secondDay.textContent = mm + "/" + dayOne(dd++) + "/" + yyyy;
+var thirdDay = document.getElementById("date-three");
+thirdDay.textContent = mm + "/" + dayOne(dd++) + "/" + yyyy;
+var fourthDay = document.getElementById("date-four");
+fourthDay.textContent = mm + "/" + dayOne(dd++) + "/" + yyyy;
+var fifthDay = document.getElementById("date-five");
+fifthDay.textContent = mm + "/" + dayOne(dd++) + "/" + yyyy;
