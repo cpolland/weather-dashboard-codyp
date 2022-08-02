@@ -18,7 +18,7 @@ searchBtn.addEventListener("click", function () {
   searchHistory.push(cityInputEl);
   storeCity();
 });
-
+// sets City in local storage
 function storeCity() {
   localStorage.setItem("cities", JSON.stringify(searchHistory));
 }
@@ -62,7 +62,7 @@ var getWeather = (city) => {
       currentUv.textContent = getForcast(posts.coord.lat, posts.coord.lon);
     });
 };
-
+// Function that fetches from the Weather API
 function getForcast(lat, lon) {
   var queryURL =
     "https://api.openweathermap.org/data/2.5/onecall?lat=" +
