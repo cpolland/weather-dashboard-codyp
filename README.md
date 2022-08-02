@@ -1,7 +1,7 @@
 # weather-dashboard-codyp
 ## Description
 
-My motivation for this Project was to create an app that used a server Side API. I wanted something that myself and friends/family could benefit from so I created a weather dashboard. Although weather dashboards are quite common I wanted to do a case study of how a weather app could be built with knowledge I have gained thus far. For this app I used the Open Weather API for my calls. I also used the built in date function in JavaScrpit to get the dates. I also used local stoarge to save the previous searched cities. 
+My motivation for this Project was to create an app that used a server Side API. I wanted something that myself and friends/family could benefit from so I created a weather dashboard. Although weather dashboards are quite common I wanted to do a case study of how a weather app could be built with knowledge I have gained thus far. For this app I used the Open Weather API for my calls. I also used the built in date function in JavaScrpit to get the dates. I also used local stoarge to save the previous searched cities. For the pages design I used Bootstrap and CSS. 
 
 ## Installation
 This project has been deployed to GitHub Pages. To get this project up and running, you can follow the deployment link. Or, download the sources files to use this as a template in VS Code. 
